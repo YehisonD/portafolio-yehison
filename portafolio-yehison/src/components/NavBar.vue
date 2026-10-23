@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
+const emit = defineEmits(['open-cv'])
+
 const menuOpen = ref(false)
 
 const links = [
@@ -20,6 +22,11 @@ function closeMenu() {
   menuOpen.value = false
 }
 
+function handleCvClick() {
+  closeMenu()
+  emit('open-cv')
+}
+
 onMounted(() => window.addEventListener('scroll', onScroll))
 onUnmounted(() => window.removeEventListener('scroll', onScroll))
 </script>
@@ -29,15 +36,16 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
     :class="[
       'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b',
       scrolled
-        ? 'bg-term-bg/95 backdrop-blur-md border-term-border'
+        ? 'bg-term-bg/95 backdrop-blur-md border-term-border shadow-lg shadow-black/20'
         : 'bg-transparent border-transparent',
     ]"
     aria-label="Navegación principal"
   >
     <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
       <!-- Logo -->
-      <a href="#inicio" class="text-term-green font-bold text-lg tracking-tight hover:text-term-cyan transition-colors">
-        &gt;_ yehison
+      <a href="#inicio" class="text-term-green font-bold text-lg tracking-tight hover:text-term-cyan transition-colors flex items-center gap-1.5">
+        <span class="text-term-green">&gt;_</span>
+        <span class="text-term-text hover:text-term-cyan transition-colors">yehison</span>
       </a>
 
       <!-- Desktop links -->
@@ -51,17 +59,16 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
           </a>
         </li>
         <li>
-          <a
-            href="/cv-yehison-delgado.pdf"
-            download="CV-Yehison-Delgado.pdf"
-            target="_blank"
-            class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded border border-term-amber/70 text-term-amber hover:bg-term-amber/10 transition-colors"
+          <button
+            @click="handleCvClick"
+            class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-md border border-term-amber/70 text-term-amber hover:bg-term-amber/10 transition-all focus:outline-none focus:ring-1 focus:ring-term-amber"
           >
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
             </svg>
-            CV
-          </a>
+            Ver CV
+          </button>
         </li>
       </ul>
 
@@ -116,18 +123,16 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
           </a>
         </li>
         <li class="pt-2 border-t border-term-border">
-          <a
-            href="/cv-yehison-delgado.pdf"
-            download="CV-Yehison-Delgado.pdf"
-            target="_blank"
-            class="inline-flex items-center gap-2 text-sm text-term-amber hover:underline py-1"
-            @click="closeMenu"
+          <button
+            @click="handleCvClick"
+            class="w-full inline-flex items-center justify-center gap-2 px-3 py-2 text-sm text-term-amber border border-term-amber/50 rounded-md hover:bg-term-amber/10 transition-colors"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
             </svg>
-            Descargar CV (PDF)
-          </a>
+            Ver Hoja de Vida (PDF)
+          </button>
         </li>
       </ul>
     </Transition>

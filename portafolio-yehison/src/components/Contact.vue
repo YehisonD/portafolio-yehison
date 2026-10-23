@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const copied = ref(false)
 
@@ -31,15 +31,34 @@ const contacts = [
     external: true,
   },
 ]
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed')
+        }
+      })
+    },
+    { threshold: 0.15 }
+  )
+
+  document.querySelectorAll('#contacto .reveal-item').forEach((el) => observer.observe(el))
+})
 </script>
 
 <template>
   <section id="contacto" class="scroll-mt-20 py-16 md:py-24">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-4">
-        <span class="text-term-cyan">//</span> Contacto
-      </h2>
-      <p class="text-term-muted mb-10 max-w-xl text-sm sm:text-base leading-relaxed">
+      <div class="reveal-item flex items-center gap-3 mb-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">
+          <span class="text-term-cyan">//</span> Contacto
+        </h2>
+        <span class="h-px flex-1 bg-gradient-to-r from-term-border to-transparent"></span>
+      </div>
+
+      <p class="reveal-item text-term-muted mb-10 max-w-xl text-sm sm:text-base leading-relaxed">
         ¿Interesado en vincularme mediante contrato de aprendizaje o colaborar en un proyecto?
         No dudes en contactarme.
       </p>
@@ -51,7 +70,8 @@ const contacts = [
           :href="c.href"
           :target="c.external ? '_blank' : undefined"
           :rel="c.external ? 'noopener noreferrer' : undefined"
-          class="group flex items-center gap-4 p-4 rounded-lg border border-term-border bg-term-panel transition-all duration-300 hover:border-term-cyan/60 hover:-translate-y-1 hover:shadow-lg hover:shadow-term-cyan/5"
+          class="reveal-item group flex items-center gap-4 p-4 rounded-xl border border-term-border bg-term-panel/90 transition-all duration-300 hover:border-term-cyan/60 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-term-cyan/5"
+          :style="{ transitionDelay: `${i * 100}ms` }"
         >
           <!-- Phone icon -->
           <div v-if="c.icon === 'phone'" class="flex-shrink-0 w-10 h-10 rounded-lg bg-term-bg flex items-center justify-center border border-term-border group-hover:border-term-cyan/40 transition-colors">
@@ -81,22 +101,24 @@ const contacts = [
       </div>
 
       <!-- Copy email button -->
-      <button
-        @click="copyEmail"
-        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-term-cyan/40 text-term-cyan text-sm font-medium hover:bg-term-cyan/10 transition-all focus:outline-none focus:ring-2 focus:ring-term-cyan focus:ring-offset-2 focus:ring-offset-term-bg"
-        :aria-label="copied ? 'Email copiado' : 'Copiar email al portapapeles'"
-      >
-        <!-- Copy icon -->
-        <svg v-if="!copied" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-          <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-        </svg>
-        <!-- Check icon -->
-        <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
-        {{ copied ? '¡Copiado!' : 'Copiar email' }}
-      </button>
+      <div class="reveal-item">
+        <button
+          @click="copyEmail"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-term-cyan/40 text-term-cyan text-sm font-medium hover:bg-term-cyan/10 transition-all focus:outline-none focus:ring-2 focus:ring-term-cyan focus:ring-offset-2 focus:ring-offset-term-bg"
+          :aria-label="copied ? 'Email copiado' : 'Copiar email al portapapeles'"
+        >
+          <!-- Copy icon -->
+          <svg v-if="!copied" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+          </svg>
+          <!-- Check icon -->
+          <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          {{ copied ? '¡Copiado!' : 'Copiar email' }}
+        </button>
+      </div>
     </div>
   </section>
 </template>
