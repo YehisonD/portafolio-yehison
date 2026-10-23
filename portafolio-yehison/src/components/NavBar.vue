@@ -50,6 +50,19 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
             {{ link.label }}
           </a>
         </li>
+        <li>
+          <a
+            href="/cv-yehison-delgado.pdf"
+            download="CV-Yehison-Delgado.pdf"
+            target="_blank"
+            class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded border border-term-amber/70 text-term-amber hover:bg-term-amber/10 transition-colors"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            CV
+          </a>
+        </li>
       </ul>
 
       <!-- Mobile hamburger -->
@@ -100,6 +113,20 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
             @click="closeMenu"
           >
             {{ link.label }}
+          </a>
+        </li>
+        <li class="pt-2 border-t border-term-border">
+          <a
+            href="/cv-yehison-delgado.pdf"
+            download="CV-Yehison-Delgado.pdf"
+            target="_blank"
+            class="inline-flex items-center gap-2 text-sm text-term-amber hover:underline py-1"
+            @click="closeMenu"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Descargar CV (PDF)
           </a>
         </li>
       </ul>

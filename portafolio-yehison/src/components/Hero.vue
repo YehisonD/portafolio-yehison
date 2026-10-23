@@ -146,6 +146,18 @@ onUnmounted(() => {
           >
             Contactar
           </a>
+          <a
+            href="/cv-yehison-delgado.pdf"
+            download="CV-Yehison-Delgado.pdf"
+            target="_blank"
+            class="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-term-amber text-term-amber font-semibold text-sm hover:bg-term-amber/10 transition-all focus:outline-none focus:ring-2 focus:ring-term-amber focus:ring-offset-2 focus:ring-offset-term-bg"
+          >
+            <!-- Download icon -->
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Descargar CV
+          </a>
         </div>
       </div>
     </div>

@@ -70,18 +70,19 @@ const projects = [
               </svg>
               Ver código
             </a>
-            <span
+            <a
               v-else
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-term-border text-term-muted text-sm cursor-not-allowed opacity-60"
-              aria-disabled="true"
+              href="#contacto"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-term-border text-term-muted text-sm hover:text-term-cyan hover:border-term-cyan/50 hover:bg-term-cyan/5 transition-all group-hover/btn"
+              title="Haz clic para solicitar el código a Yehison"
             >
               <!-- Lock icon -->
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <svg class="w-4 h-4 text-term-amber" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                 <path d="M7 11V7a5 5 0 0110 0v4" />
               </svg>
-              Código disponible bajo solicitud
-            </span>
+              Código bajo solicitud (Contactar)
+            </a>
           </div>
         </article>
       </div>
