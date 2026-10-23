@@ -7,7 +7,9 @@ const menuOpen = ref(false)
 
 const links = [
   { label: 'Inicio', href: '#inicio' },
+  { label: 'Sobre mí', href: '#sobre-mi' },
   { label: 'Habilidades', href: '#habilidades' },
+  { label: 'Trayectoria', href: '#trayectoria' },
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Contacto', href: '#contacto' },
 ]
