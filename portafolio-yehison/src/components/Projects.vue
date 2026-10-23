@@ -13,14 +13,14 @@ const projects = [
     title: 'Sistema de Gestión de Parqueadero',
     stack: ['Java', 'Spring Boot', 'JPA/Hibernate', 'MySQL', 'Postman'],
     description: 'Backend para gestionar accesos y calcular tarifas mediante servicios API REST. Manejo global de excepciones y arquitectura por capas.',
-    repo: null,
+    repo: 'https://github.com/YehisonD/SpringB.git',
     badge: 'Backend REST API',
   },
   {
     title: 'Aplicaciones web backend modulares',
     stack: ['PHP', 'Laravel', 'Python', 'Django', 'Docker'],
     description: 'Patrones MVC/MVT, paneles administrativos y control de acceso basado en roles (RBAC) con entornos portables en Docker.',
-    repo: null,
+    repo: 'https://github.com/YehisonD/ProyectoDjViernes.git',
     badge: 'MVC / RBAC',
   },
 ]
